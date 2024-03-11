@@ -1,1 +1,2 @@
-helm install quotes https://github.com/nsmbo/Quotes/charts
+helm repo add https://github.com/nsmbo/Quotes/charts
+helm install quotes quotes
