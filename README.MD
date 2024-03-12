@@ -1,6 +1,10 @@
-docker build /src -t markbovee/quotes:0.1.0
+docker build src -t markbovee/quotes:0.1.3
+docker push markbovee/quotes:0.1.3
 
-helm repo index quotes --url https://github.com/nsmbo/Quotes
+helm package quotes
+helm repo index quotes/ --url https://nsmbo.github.io/
 
-helm repo add https://github.com/nsmbo/Quotes/charts
-helm install quotes quotes
+helm repo add nsmbo https://nsmbo.github.io/
+
+helm install quotes nsmbo/quotes --namespace quotes --create-namespace
+helm install argo-cd nsmbo/quotes --namespace argo-cd  --create-namespace
